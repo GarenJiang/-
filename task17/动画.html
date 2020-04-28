@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #a {
+        height: 250px;
+        width: 300px;
+        border: 1px solid yellow;
+        animation: myfirst 0.5s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        margin: 100px;
+        font-size: 10px;
+      }
+      @keyframes myfirst {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.2);
+        }
+      }
+      #b,
+      #c {
+        height: 100%;
+        width: 50%;
+        float: left;
+        background-color: red;
+        border-radius: 7.5em 7.5em 0 0;
+      }
+      #b {
+        transform-origin: right bottom;
+        transform: rotate(45deg);
+      }
+      #c {
+        transform-origin: left bottom;
+        transform: rotate(-45deg);
+      }
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a" class="clearfix">
+      <div id="b"></div>
+      <div id="c"></div>
+    </div>
+  </body>
+</html>

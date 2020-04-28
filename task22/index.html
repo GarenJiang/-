@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      canvas {
+        background-color: rgb(245, 242, 239);
+      }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    let canvas = document.createElement("canvas");
+    let width = document.documentElement.clientWidth;
+    let height = document.documentElement.clientHeight;
+    canvas.height = height;
+    canvas.width = width;
+    let body = document.querySelector("body");
+    body.appendChild(canvas);
+    let ctx = canvas.getContext("2d");
+    ctx.lineWidth = 30;
+    ctx.lineCap = "round";
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      canvas.ontouchstart = function (e) {
+        let x = e.targetTouches[0].clientX;
+        let y = e.targetTouches[0].clientY;
+        console.log(e);
+        console.log(x, y);
+        canvas.ontouchmove = function (e) {
+          ctx.moveTo(x, y);
+          ctx.lineTo(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+          ctx.stroke();
+          x = e.targetTouches[0].clientX;
+          y = e.targetTouches[0].clientY;
+        };
+      };
+    } else {
+      canvas.onmousedown = function (e) {
+        let x = e.clientX;
+        let y = e.clientY;
+        canvas.onmousemove = function (e) {
+          ctx.moveTo(x, y);
+          ctx.lineTo(e.clientX, e.clientY);
+          ctx.stroke();
+          x = e.clientX;
+          y = e.clientY;
+          canvas.onmouseup = function () {
+            canvas.onmousemove = null;
+          };
+        };
+      };
+    }
+  </script>
+</html>
