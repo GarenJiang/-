@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="a">加载css使得页面变黄</button>
+    <button id="b1">加载js出现弹窗</button>
+    <button id="c">加载html增加一个红色div</button>
+    <button id="d">加载xml并在控制台输出</button>
+    <p>姓名:xxx 性别:x</p>
+    <button id="e">加载json显示姓名性别</button>
+  </body>
+  <script>
+    e.onclick = function () {
+      let request = new XMLHttpRequest();
+      request.open("GET", "http://localhost:8888/5.json", true);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            let a = request.response;
+            a = JSON.parse(a);
+            document.querySelector(
+              "p"
+            ).innerHTML = `姓名:${a.name}  性别:${a.gender} `;
+          } else {
+          }
+        }
+      };
+
+      request.send();
+    };
+    d.onclick = function () {
+      let request = new XMLHttpRequest();
+      request.open("GET", "http://localhost:8888/4.xml", true);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            let dom = request.responseXML;
+            console.log(
+              dom.getElementsByTagName("to")[0].childNodes[0].nodeValue
+            );
+          } else {
+          }
+        }
+      };
+
+      request.send();
+    };
+    c.onclick = function () {
+      let request = new XMLHttpRequest();
+      request.open("GET", "http://localhost:8888/3.html", true);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            addHtml(request.responseText);
+          } else {
+          }
+        }
+      };
+
+      request.send();
+    };
+    b1.onclick = function () {
+      let request = new XMLHttpRequest();
+      request.open("GET", "http://localhost:8888/2.js", true);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            addJs(request.responseText);
+          } else {
+          }
+        }
+      };
+
+      request.send();
+    };
+
+    a.onclick = function () {
+      let request = new XMLHttpRequest();
+      request.open("GET", "http://localhost:8888/style.css", true);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            console.log(request.responseText);
+            addCss(request.responseText);
+          } else {
+          }
+        }
+      };
+
+      request.send();
+    };
+    function addJs(request) {
+      let a = document.createElement("script");
+      a.innerHTML = request;
+      document.querySelector("body").appendChild(a);
+    }
+    function addCss(request) {
+      let a = document.createElement("style");
+      a.innerHTML = request;
+      document.querySelector("head").appendChild(a);
+    }
+    function addHtml(request) {
+      let a = document.createElement("div");
+      a.innerHTML = request;
+      document.querySelector("body").appendChild(a);
+    }
+  </script>
+</html>
