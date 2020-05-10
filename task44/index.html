@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./public/style.css" />
   </head>
   <body>
     <button id="a">加载css使得页面变黄</button>
@@ -16,7 +17,7 @@
   <script>
     e.onclick = function () {
       let request = new XMLHttpRequest();
-      request.open("GET", "/public/5.json", true);
+      request.open("GET", "/task44/public/5.json", true);
       request.onreadystatechange = function () {
         if (request.readyState === 4) {
           if (request.status === 200) {
@@ -34,7 +35,7 @@
     };
     d.onclick = function () {
       let request = new XMLHttpRequest();
-      request.open("GET", "/public/4.xml", true);
+      request.open("GET", "/task44/public/4.xml", true);
       request.onreadystatechange = function () {
         if (request.readyState === 4) {
           if (request.status === 200) {
@@ -51,7 +52,7 @@
     };
     c.onclick = function () {
       let request = new XMLHttpRequest();
-      request.open("GET", "/public/3.html", true);
+      request.open("GET", "/task44/public/3.html", true);
       request.onreadystatechange = function () {
         if (request.readyState === 4) {
           if (request.status === 200) {
@@ -65,7 +66,7 @@
     };
     b1.onclick = function () {
       let request = new XMLHttpRequest();
-      request.open("GET", "/public/2.js", true);
+      request.open("GET", "/task44/public/2.js", true);
       request.onreadystatechange = function () {
         if (request.readyState === 4) {
           if (request.status === 200) {
@@ -80,7 +81,7 @@
 
     a.onclick = function () {
       let request = new XMLHttpRequest();
-      request.open("GET", "/public/style.css", true);
+      request.open("GET", "/task44/public/style.css", true);
       request.onreadystatechange = function () {
         if (request.readyState === 4) {
           if (request.status === 200) {
