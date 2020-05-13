@@ -22,21 +22,22 @@ var server = http.createServer(function (request, response) {
   /******** 从这里开始看，上面不要看 ************/
 
   console.log("有个傻子发请求过来啦！路径（带查询参数）为：" + pathWithQuery);
-  let x = path.match(/\.[A-Za-z]{1,}/)[0].slice(1);
-  let y = path.match(/public\/([A-Za-z0-9]{1,}\.[A-Za-z]{1,})/)[1];
-  let type = {
-    html: "text/html",
-    js: "text/javascript",
-    json: "text/json",
-    css: "text/css",
-    jpg: "image/jpeg",
-  };
+
   if (path.indexOf("public") === -1) {
     response.statusCode = 404;
     response.setHeader("Content-Type", "text/html;charset=utf-8");
     response.write(`只接受查询静态文件`);
     response.end();
   } else {
+    let x = path.match(/\.[A-Za-z]{1,}/)[0].slice(1);
+    let y = path.match(/public\/([A-Za-z0-9]{1,}\.[A-Za-z]{1,})/)[1];
+    let type = {
+      html: "text/html",
+      js: "text/javascript",
+      json: "text/json",
+      css: "text/css",
+      jpg: "image/jpeg",
+    };
     response.statusCode = 200;
     response.setHeader("Content-Type", `${type[x]};charset=utf-8`);
     response.write(fs.readFileSync(`public/${y}`));
