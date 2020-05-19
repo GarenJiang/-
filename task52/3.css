@@ -1,0 +1,21 @@
+#c {
+  position: relative;
+}
+#c div {
+  position: absolute;
+  left: 0%;
+  width: 15%;
+  height: 15%;
+  background-color: blue;
+  transition: 2s;
+}
+
+#c div.right {
+  left: 100%;
+  transition: 2s;
+  transform: translate(-100%, 0);
+}
+#c div.item {
+  background-color: transparent;
+  transition: 0s;
+}

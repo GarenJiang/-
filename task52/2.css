@@ -1,0 +1,9 @@
+#b {
+  /* display: flex; */
+}
+#b > div {
+  float: left;
+  text-align: center;
+  width: 50%;
+  border: 1px solid black;
+}

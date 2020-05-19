@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  overflow: hidden;
+}
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+body > div {
+  border: 1px solid #000;
+  width: 50vw;
+  height: 50vh;
+}
+#b > div {
+  float: left;
+  text-align: center;
+  width: 50%;
+  border: 1px solid #000;
+}
+#c {
+  position: relative;
+}
+#c div {
+  position: absolute;
+  left: 0;
+  width: 15%;
+  height: 15%;
+  background-color: #00f;
+  transition: 2s;
+}
+#c div.right {
+  left: 100%;
+  transition: 2s;
+  transform: translate(-100%);
+}
+#c div.item {
+  transition: 0s;
+}
+@keyframes myfirst {
+  0% {
+    background: red;
+  }
+  25% {
+    background: #ff0;
+  }
+  50% {
+    background: #00f;
+  }
+  75% {
+    background: green;
+  }
+  to {
+    background: red;
+  }
+}
+#d:hover {
+  animation: myfirst 5s infinite;
+}
+/*# sourceMappingURL=/man.512579fe.css.map */
